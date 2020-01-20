@@ -10,12 +10,13 @@ const App = props => {
       { name: "Alexander", age: 21 },
       { name: "Clifford", age: 19 }
     ],
-    otherState: "some other value"
+    otherState: "some other value",
+    showPersons: false
   });
-  const [otherState, setOtherState] = useState('some other value');
+  const [otherState, setOtherState] = useState("some other value");
   console.log(personsState, otherState);
 
-  const switchNameHandler = (newName) => {
+  const switchNameHandler = newName => {
     //console.log('Was clicked!');
     setPersonsState({
       persons: [
@@ -27,7 +28,7 @@ const App = props => {
       otherState: setOtherState
     });
   };
-  const nameChangeHandler = (event) => {
+  const nameChangeHandler = event => {
     setPersonsState({
       persons: [
         { name: "Cameron", age: 24 },
@@ -36,37 +37,58 @@ const App = props => {
         { name: "Clifford", age: 19 }
       ]
     });
-  }
+  };
+
+  const togglePersonsHandler = event => {
+    const doesShow = personsState.showPersons;
+    console.log(doesShow);
+    setPersonsState({
+      personsState: !doesShow
+    });
+  };
+  const style = {
+    backgroundColor: "white",
+    font: "inherit",
+    border: "1px solid blue",
+    padding: "8px",
+    cursor: "pointer"
+  };
   return (
     <div className="App">
       <p>App</p>
-      <button onClick={() => switchNameHandler('Tetsu!')}>Switch Name</button>
-      <Person
-        name={personsState.persons[0].name}
-        age={personsState.persons[0].age}
-      >
-        My Hobbies: Gaming
-      </Person>
-      <Person
-        name={personsState.persons[1].name}
-        age={personsState.persons[1].age}
-        click={switchNameHandler.bind(setPersonsState, 'Fuck Boi')}
-        chaged={nameChangeHandler}
-      >
-        My Hobbies: Coding
-      </Person>
-      <Person
-        name={personsState.persons[2].name}
-        age={personsState.persons[2].age}
-      >
-        My Hobbies: Modeling
-      </Person>
-      <Person
-        name={personsState.persons[3].name}
-        age={personsState.persons[3].age}
-      >
-        My Hobbies: Smoking
-      </Person>
+      <button style={style} onClick={togglePersonsHandler}>
+        Switch Name
+      </button>
+      {personsState.showPersons === true ? (
+        <div>
+          <Person
+            name={personsState.persons[0].name}
+            age={personsState.persons[0].age}
+          >
+            My Hobbies: Gaming
+          </Person>
+          <Person
+            name={personsState.persons[1].name}
+            age={personsState.persons[1].age}
+            click={switchNameHandler.bind(setPersonsState, "Fuck Boi")}
+            chaged={nameChangeHandler}
+          >
+            My Hobbies: Coding
+          </Person>
+          <Person
+            name={personsState.persons[2].name}
+            age={personsState.persons[2].age}
+          >
+            My Hobbies: Modeling
+          </Person>
+          <Person
+            name={personsState.persons[3].name}
+            age={personsState.persons[3].age}
+          >
+            My Hobbies: Smoking
+          </Person>
+        </div>
+      ) : null}
     </div>
   );
 };
