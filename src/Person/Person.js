@@ -7,6 +7,7 @@ const Person = props => {
         I'm a {props.name} and I'm {props.age} years old.
       </p>
       <p>{props.children}</p>
+      <input type="text" onChange={props.chaged} value={props.name}/>
     </div>
   );
 };
