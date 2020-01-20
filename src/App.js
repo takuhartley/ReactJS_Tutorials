@@ -11,7 +11,7 @@ const App = props => {
       { name: "Clifford", age: 19 }
     ],
     otherState: "some other value",
-    showPersons: false
+    showPersons: true
   });
   const [otherState, setOtherState] = useState("some other value");
   console.log(personsState, otherState);
@@ -39,13 +39,13 @@ const App = props => {
     });
   };
 
-  const togglePersonsHandler = event => {
+  const togglePersonsHandler = () => {
     const doesShow = personsState.showPersons;
-    console.log(doesShow);
-    setPersonsState({
-      personsState: !doesShow
-    });
+    // console.log(personsState.showPersons);
+    // console.log(doesShow);
+    setPersonsState({ personsState: !doesShow });
   };
+
   const style = {
     backgroundColor: "white",
     font: "inherit",
@@ -53,14 +53,12 @@ const App = props => {
     padding: "8px",
     cursor: "pointer"
   };
-  return (
-    <div className="App">
-      <p>App</p>
-      <button style={style} onClick={togglePersonsHandler}>
-        Switch Name
-      </button>
-      {personsState.showPersons === true ? (
-        <div>
+
+  let persons = null;
+
+  if(personsState.showPersons) {
+    persons = (
+      <div>
           <Person
             name={personsState.persons[0].name}
             age={personsState.persons[0].age}
@@ -71,7 +69,7 @@ const App = props => {
             name={personsState.persons[1].name}
             age={personsState.persons[1].age}
             click={switchNameHandler.bind(setPersonsState, "Fuck Boi")}
-            chaged={nameChangeHandler}
+            chaged={togglePersonsHandler}
           >
             My Hobbies: Coding
           </Person>
@@ -88,7 +86,15 @@ const App = props => {
             My Hobbies: Smoking
           </Person>
         </div>
-      ) : null}
+    );
+  }
+  return (
+    <div className="App">
+      <p>App</p>
+      <button style={style} onClick={nameChangeHandler}>
+        Switch Name
+      </button>
+      {persons}
     </div>
   );
 };
