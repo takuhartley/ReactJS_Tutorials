@@ -11,7 +11,7 @@ class App extends Component {
       { name: "Clifford", age: 19 }
     ],
     otherState: "some other value",
-    showPersons: true
+    showPersons: false
   };
 
   switchNameHandler = newName => {
@@ -36,7 +36,7 @@ class App extends Component {
       ]
     });
   };
-  
+
   togglePersonsHandler = () => {
     const doesShow = this.showPersons;
     this.setState({ showPersons: !doesShow });
@@ -56,7 +56,7 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.personsState.map(person => {
+          {this.state.persons.map(person => {
             return <Person name={person.name} age={person.age} />;
           })}
         </div>
@@ -66,7 +66,7 @@ class App extends Component {
     return (
       <div className="App">
         <p>App</p>
-        <button style={style} onClick={this.nameChangeHandler}>
+        <button style={style} onClick={this.togglePersonsHandler}>
           Switch Name
         </button>
         {persons}
