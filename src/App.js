@@ -5,17 +5,17 @@ import "./App.css";
 class App extends Component {
   state = {
     persons: [
-      { name: "Cameron", age: 24 },
-      { name: "Robert", age: 22 },
-      { name: "Alexander", age: 21 },
-      { name: "Clifford", age: 19 }
+      { id: 'aifeh', name: "Cameron", age: 24 },
+      { id: 'feifs', name: "Robert", age: 22 },
+      { id: 'jieni', name: "Alexander", age: 21 },
+      { id: 'ienwi', name: "Clifford", age: 19 }
     ],
     otherState: "some other value",
     showPersons: false
   };
 
   // Handlers
-  deletePersonHandler = (personIndex) => {
+  deletePersonHandler = personIndex => {
     // Takes a copy of array with slice()
     const persons = [...this.state.persons];
     // const persons = this.state.persons.slice();
@@ -69,9 +69,10 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
-                click={() => this.deletePersonHandler(index)}
-                name={person.name}
                 age={person.age}
+                name={person.name}
+                key={person.id}
+                click={() => this.deletePersonHandler(index)}
               />
             );
           })}
