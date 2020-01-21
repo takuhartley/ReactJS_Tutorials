@@ -14,24 +14,15 @@ class App extends Component {
     showPersons: false
   };
 
-  // switchNameHandler = newName => {
-  //   //console.log('Was clicked!');
-  //   this.setState({
-  //     persons: [
-  //       { name: newName, age: 24 },
-  //       { name: "Rob", age: 22 },
-  //       { name: "Alex", age: 21 },
-  //       { name: "Cliff", age: 19 }
-  //     ],
-  //     otherState: this.otherState
-  //   });
-  // };
-
+  // Handlers
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // Takes a copy of array with slice()
+    const persons = [...this.state.persons];
+    // const persons = this.state.persons.slice();
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   };
+  // Name Change
   nameChangeHandler = event => {
     this.setState({
       persons: [
@@ -47,6 +38,19 @@ class App extends Component {
     const doesShow = this.showPersons;
     this.setState({ showPersons: !doesShow });
   };
+
+  // switchNameHandler = newName => {
+  //   //console.log('Was clicked!');
+  //   this.setState({
+  //     persons: [
+  //       { name: newName, age: 24 },
+  //       { name: "Rob", age: 22 },
+  //       { name: "Alex", age: 21 },
+  //       { name: "Cliff", age: 19 }
+  //     ],
+  //     otherState: this.otherState
+  //   });
+  // };
 
   render() {
     const style = {
