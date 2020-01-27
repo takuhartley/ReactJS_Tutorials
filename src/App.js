@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Person from "./Person/Person";
 import "./App.css";
+import { whileStatement } from "@babel/types";
 
 class App extends Component {
   state = {
@@ -56,7 +57,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      color: "white",
+      backgroundColor: "green",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -81,6 +83,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = "red"
     }
 
     return (
