@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Person from "./Person/Person";
 import "./App.css";
-import { whileStatement } from "@babel/types";
+import Radium from 'radium';
 
 class App extends Component {
   state = {
@@ -42,18 +42,18 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
 
-  // switchNameHandler = newName => {
-  //   //console.log('Was clicked!');
-  //   this.setState({
-  //     persons: [
-  //       { name: newName, age: 24 },
-  //       { name: "Rob", age: 22 },
-  //       { name: "Alex", age: 21 },
-  //       { name: "Cliff", age: 19 }
-  //     ],
-  //     otherState: this.otherState
-  //   });
-  // };
+  switchNameHandler = newName => {
+    //console.log('Was clicked!');
+    this.setState({
+      persons: [
+        { name: newName, age: 24 },
+        { name: "Rob", age: 22 },
+        { name: "Alex", age: 21 },
+        { name: "Cliff", age: 19 }
+      ],
+      otherState: this.otherState
+    });
+  };
 
   render() {
     const style = {
@@ -62,7 +62,10 @@ class App extends Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      ':hover': {
+        background
+      }
     };
 
     let persons = null;
@@ -105,4 +108,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
