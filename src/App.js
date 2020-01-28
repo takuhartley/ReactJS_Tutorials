@@ -42,18 +42,18 @@ class App extends Component {
     this.setState({ showPersons: !doesShow });
   };
 
-  switchNameHandler = newName => {
-    //console.log('Was clicked!');
-    this.setState({
-      persons: [
-        { name: newName, age: 24 },
-        { name: "Rob", age: 22 },
-        { name: "Alex", age: 21 },
-        { name: "Cliff", age: 19 }
-      ],
-      otherState: this.otherState
-    });
-  };
+  // switchNameHandler = newName => {
+  //   //console.log('Was clicked!');
+  //   this.setState({
+  //     persons: [
+  //       { name: newName, age: 24 },
+  //       { name: "Rob", age: 22 },
+  //       { name: "Alex", age: 21 },
+  //       { name: "Cliff", age: 19 }
+  //     ],
+  //     otherState: this.otherState
+  //   });
+  // };
 
   render() {
     const style = {
@@ -64,7 +64,8 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
       ':hover': {
-        background
+        backgroundColor: 'lightgreen',
+        color: 'black'
       }
     };
 
@@ -83,7 +84,11 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = "red"
+      style.backgroundColor = "red";
+      style[':hover'] = {
+        backgroundColor: 'lightred',
+        color: 'black'
+      }
     }
     
     const classes = []
